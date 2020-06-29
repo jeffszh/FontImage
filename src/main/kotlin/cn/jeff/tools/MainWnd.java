@@ -1,9 +1,15 @@
 package cn.jeff.tools;
 
+import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 
 public class MainWnd {
 
-	public Button btn01;
+	private MainWndK k = new MainWndK();
+	public Button btnStart;
+
+	public void btnStartClick(ActionEvent event) {
+		k.btnStartClick();
+	}
 
 }
