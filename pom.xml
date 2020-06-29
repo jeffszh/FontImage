@@ -5,21 +5,15 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.example</groupId>
-	<artifactId>tornadofx-maven-project</artifactId>
+	<artifactId>font-image</artifactId>
 	<version>1.0</version>
 	<packaging>jar</packaging>
 
 	<properties>
 		<kotlin.version>1.3.50</kotlin.version>
-		<tornadofx.version>1.7.17</tornadofx.version>
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>no.tornado</groupId>
-			<artifactId>tornadofx</artifactId>
-			<version>${tornadofx.version}</version>
-		</dependency>
 		<dependency>
 			<groupId>org.jetbrains.kotlin</groupId>
 			<artifactId>kotlin-stdlib</artifactId>
@@ -71,6 +65,26 @@
 						<phase>test-compile</phase>
 						<goals>
 							<goal>test-compile</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>compile</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>testCompile</id>
+						<phase>test-compile</phase>
+						<goals>
+							<goal>testCompile</goal>
 						</goals>
 					</execution>
 				</executions>
