@@ -3,7 +3,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
-			xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.jeff.tools.MainWnd">
-	<Button layoutX="273.0" layoutY="189.0" mnemonicParsing="false" text="Button" fx:id="btn01"/>
+<AnchorPane prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.jeff.tools.MainWnd">
+	<Button fx:id="btn01" layoutX="373.0" layoutY="189.0" mnemonicParsing="false" text="Button" />
 </AnchorPane>

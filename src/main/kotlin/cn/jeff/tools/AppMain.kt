@@ -11,7 +11,7 @@ class AppMain : Application() {
 	@Throws(Exception::class)
 	override fun start(primaryStage: Stage) {
 		val root = FXMLLoader.load<Parent>(javaClass.getResource("/fxml/MainWnd.fxml"))
-		primaryStage.title = "字体图片截取工具"
+		primaryStage.title = "字体截取工具（将字体作为图片存起来）"
 		primaryStage.scene = Scene(root)
 		primaryStage.show()
 	}
