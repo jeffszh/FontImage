@@ -40,14 +40,6 @@ class MainWndK(private val j: MainWnd) {
 			gc.font = textFont
 			gc.fill = Color.valueOf(fontColor)
 			gc.stroke = Paint.valueOf(fontColor)
-//		gc.strokeText("ABC abc", 30.0, 20.0)
-////		gc.fillText("ABC abc", 30.0, 20.0)
-//		val snapshotParameters = SnapshotParameters().also {
-//			it.fill = Color.TRANSPARENT
-//			it.viewport = Rectangle2D(30.0, 10.0, 50.0, 40.0)
-//		}
-//		val img = j.workCanvas.snapshot(snapshotParameters, null)
-//		ImageIO.write(SwingFXUtils.fromFXImage(img, null), "png", File("myPic.png"))
 
 			val upperCaseLetters = ('A'..'Z').toList().toCharArray()
 			val lowerCaseLetters = ('a'..'z').toList().toCharArray()
