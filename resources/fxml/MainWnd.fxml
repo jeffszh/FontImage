@@ -4,9 +4,10 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
+<BorderPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
 			xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.jeff.tools.MainWnd">
 	<top>
 		<AnchorPane prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
@@ -15,9 +16,12 @@
 		</AnchorPane>
 	</top>
 	<center>
-		<VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-			<Canvas fx:id="workCanvas" height="100" width="200"/>
-			<Canvas height="200.0" width="200.0"/>
+		<VBox BorderPane.alignment="CENTER">
+			<Canvas fx:id="workCanvas" height="200" width="800"/>
 		</VBox>
 	</center>
+	<bottom>
+		<FlowPane fx:id="outputPane" hgap="8.0" prefHeight="300.0" style="-fx-background-color: #8ef;" vgap="8.0"
+				  BorderPane.alignment="CENTER"/>
+	</bottom>
 </BorderPane>
