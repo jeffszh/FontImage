@@ -8,18 +8,25 @@ import javafx.scene.paint.Color
 import javafx.scene.paint.Paint
 import javafx.scene.text.Font
 import javafx.scene.text.Text
+import java.io.File
+import javax.imageio.ImageIO
 import kotlin.math.ceil
 
 class MainWndK(private val j: MainWnd) {
 
 	companion object {
-		const val outputPath = "font-png/"
+		private const val outputPath = "font-png"
+		//
+//		private val textFont: Font = Font.font("Inconsolata", 30.0)
+//		private val textFont: Font = Font.font("Cousine", 26.0)
+		private val textFont: Font = Font.font("Courier New", 28.0)
+//		private val textFont: Font = Font.font("Consolas", 26.0)
 	}
 
 	fun btnStartClick() {
 		// 计算字体尺寸
 		val tempText = Text("A")
-		tempText.font = Font.font("Courier New", 26.0)
+		tempText.font = textFont
 		val (xSize, ySize) = with(tempText.layoutBounds) {
 			ceil(width + 1) to ceil(height)
 		}
@@ -30,7 +37,8 @@ class MainWndK(private val j: MainWnd) {
 			val gc = j.workCanvas.graphicsContext2D
 			gc.fill = Color.TRANSPARENT
 			gc.fillRect(0.0, 0.0, 800.0, 200.0)
-			gc.font = tempText.font
+			gc.font = textFont
+			gc.fill = Color.valueOf(fontColor)
 			gc.stroke = Paint.valueOf(fontColor)
 //		gc.strokeText("ABC abc", 30.0, 20.0)
 ////		gc.fillText("ABC abc", 30.0, 20.0)
@@ -44,21 +52,28 @@ class MainWndK(private val j: MainWnd) {
 			val upperCaseLetters = ('A'..'Z').toList().toCharArray()
 			val lowerCaseLetters = ('a'..'z').toList().toCharArray()
 			val digitNumbers = ('0'..'9').toList().toCharArray()
-			val characterArrays = arrayOf(upperCaseLetters, lowerCaseLetters, digitNumbers)
+			val punctuations = " !@#$%^&*(),.'\"?/<>".toCharArray()
+			val characterArrays = arrayOf(upperCaseLetters, lowerCaseLetters, digitNumbers, punctuations)
+
+			// 创建对应颜色的输出目录
+			File("$outputPath/$fontColor").mkdirs()
 
 			characterArrays.forEachIndexed { y, chars ->
 				chars.forEachIndexed { x, c ->
 					gc.strokeText(c.toString(), x * xSize + 1, y * ySize + ySize)
+					gc.fillText(c.toString(), x * xSize + 1, y * ySize + ySize)
 				}
-				chars.forEachIndexed { i, _ ->
+				chars.forEachIndexed { x, c ->
 					val snapshotParameters = SnapshotParameters().also {
 						it.fill = Color.TRANSPARENT
-						it.viewport = Rectangle2D(i * xSize, y * ySize + 6, xSize, ySize)
+						it.viewport = Rectangle2D(x * xSize, y * ySize + 6, xSize, ySize)
 					}
 					val img = j.workCanvas.snapshot(snapshotParameters, null)
 					j.outputPane.children.add(Canvas(xSize, ySize).also {
 						it.graphicsContext2D.drawImage(img, 0.0, 0.0)
 					})
+					ImageIO.write(SwingFXUtils.fromFXImage(img, null), "png",
+							File("$outputPath/$fontColor/[${c.toByte()}].png"))
 				}
 			}
 		}
