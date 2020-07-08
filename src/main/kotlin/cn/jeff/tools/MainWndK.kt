@@ -44,7 +44,7 @@ class MainWndK(private val j: MainWnd) {
 			val upperCaseLetters = ('A'..'Z').toList().toCharArray()
 			val lowerCaseLetters = ('a'..'z').toList().toCharArray()
 			val digitNumbers = ('0'..'9').toList().toCharArray()
-			val punctuations = " !@#$%^&*(),.'\"?/<>".toCharArray()
+			val punctuations = " !@#$%^&*()-=_+[]{};'\\:\"|,./<>?".toCharArray()
 			val characterArrays = arrayOf(upperCaseLetters, lowerCaseLetters, digitNumbers, punctuations)
 
 			// 创建对应颜色的输出目录
@@ -65,7 +65,7 @@ class MainWndK(private val j: MainWnd) {
 						it.graphicsContext2D.drawImage(img, 0.0, 0.0)
 					})
 					ImageIO.write(SwingFXUtils.fromFXImage(img, null), "png",
-							File("$outputPath/$fontColor/[${c.toByte()}].png"))
+							File("$outputPath/$fontColor/${c.toByte()}.png"))
 				}
 			}
 		}
