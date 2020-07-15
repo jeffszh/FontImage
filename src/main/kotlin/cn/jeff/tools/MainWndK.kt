@@ -58,7 +58,7 @@ class MainWndK(private val j: MainWnd) {
 				chars.forEachIndexed { x, c ->
 					val snapshotParameters = SnapshotParameters().also {
 						it.fill = Color.TRANSPARENT
-						it.viewport = Rectangle2D(x * xSize, y * ySize + 6, xSize, ySize)
+						it.viewport = Rectangle2D(x * xSize, y * ySize + 9, xSize, ySize)
 					}
 					val img = j.workCanvas.snapshot(snapshotParameters, null)
 					j.outputPane.children.add(Canvas(xSize, ySize).also {
